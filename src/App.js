@@ -2,28 +2,18 @@ import logo from "./logo.svg";
 import "./App.scss";
 import "./style/sass/styles.scss";
 import Panorama from "./components/Panorama";
+import TesteDiv from "./components/TesteDiv";
+import { useRef } from "react";
 
 function App() {
+  const resultRef = useRef(null);
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
     <>
-      {/* <div className="navbar">Hey</div> */}
-      <Panorama />
+      <div className="navbar">
+        <p>Hey</p>
+      </div>
+      <Panorama resultRef={resultRef} />
+      <TesteDiv ref={resultRef} />
     </>
   );
 }
