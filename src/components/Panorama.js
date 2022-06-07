@@ -11,7 +11,7 @@ export default function Panorama() {
         height="100vh"
         image={myImage}
         pitch={0 }
-        yaw={220}
+        yaw={180}
         hfov={130}
         showControls={false}
         // hotspotDebug={true}
