@@ -2,14 +2,9 @@ import {
   AppBar,
   Toolbar,
   Container,
-  Grid,
   Typography,
-  Tabs,
-  Tab,
   IconButton,
   Box,
-  Menu,
-  MenuItem,
   Button,
   useMediaQuery,
   useTheme,
@@ -18,6 +13,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
 import { DrawerComponent } from "./DrawerComponent";
+import { Link } from "react-router-dom";
 
 const pages = ["V-PROMED", "ESPECIALIDADES", "DESTAQUES", "CONTACTOS"];
 
@@ -27,19 +23,23 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  console.log(theme);
   return (
     <>
-      <AppBar position="sticky">
-        <Container maxWidth="xl" sx={{marginTop: "15px", marginBottom: "15px"}}>
+      <AppBar position="fixed">
+        <Container
+          maxWidth="xl"
+          sx={{ marginTop: "15px", marginBottom: "15px" }}
+        >
           <Toolbar disableGutters>
-            <Typography>
-              <img
-                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-                alt="Google Logo"
-                width="150"
-              />
-            </Typography>
+            <Link to={"/"}>
+              <Typography>
+                <img
+                  src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                  alt="Google Logo"
+                  width="150"
+                />
+              </Typography>
+            </Link>
             {isMobile ? (
               <DrawerComponent
                 openDrawer={openDrawer}
@@ -61,17 +61,16 @@ const Navbar = () => {
               </Box>
             )}
 
-            {isMobile ? (
-              <Stack direction="row"
+            {isMobile && (
+              <Stack
+                direction="row"
                 justifyContent="flex-end"
-                sx={{ flexGrow: 1}}
+                sx={{ flexGrow: 1 }}
               >
                 <IconButton onClick={() => setOpenDrawer(true)}>
                   <MenuIcon color="secondary" />
                 </IconButton>
               </Stack>
-            ) : (
-              ""
             )}
           </Toolbar>
         </Container>

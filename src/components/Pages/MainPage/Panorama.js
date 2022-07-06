@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Pannellum } from "pannellum-react";
-import myImage from "../img/pano.jpg";
+import myImage from "../../../img/pano.jpg";
 
 const Panorama = ({ resultRef }) => {
 
