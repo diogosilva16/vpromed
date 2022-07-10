@@ -31,7 +31,7 @@ const Navbar = () => {
           sx={{ marginTop: "15px", marginBottom: "15px" }}
         >
           <Toolbar disableGutters>
-            <Link to={"/"}>
+            <Link to={"/inicio"}>
               <Typography>
                 <img
                   src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"

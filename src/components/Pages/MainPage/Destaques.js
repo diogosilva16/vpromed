@@ -22,7 +22,7 @@ const Destaques = forwardRef((props, ref) => {
   };
   return (
     <div ref={ref} className="teste">
-      <Grid container pt={5} pb={5} >
+      <Grid container pt={5} pb={5}>
         <Typography sx={{ color: "white", textTransform: "uppercase" }} pb={2}>
           Destaques
         </Typography>
@@ -33,7 +33,7 @@ const Destaques = forwardRef((props, ref) => {
           position={isMobile || isTablet ? "" : "relative"}
         >
           <Grid
-            direction="column"
+            item
             md={4}
             p={isMobile || isTablet ? 0 : 10}
             sx={{
@@ -45,13 +45,25 @@ const Destaques = forwardRef((props, ref) => {
               width: "100%",
             }}
           >
-            <Typography variant="h6" sx={{textTransform: "uppercase"}}>Para empresas</Typography>
-            <Typography variant="h2" sx={{textTransform: "uppercase", fontFamily: "Times New Roman"}}>Dental work</Typography>
+            <Typography variant="h6" sx={{ textTransform: "uppercase" }}>
+              Para empresas
+            </Typography>
+            <Typography
+              variant="h2"
+              sx={{ textTransform: "uppercase", fontFamily: "Times New Roman" }}
+            >
+              Dental work
+            </Typography>
             <Typography variant="body1" pb={2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
-            <Button variant="contained" color="success" fullWidth onClick={goToHighPage}>
+            <Button
+              variant="contained"
+              color="success"
+              fullWidth
+              onClick={goToHighPage}
+            >
               Saber mais
             </Button>
           </Grid>
@@ -64,7 +76,7 @@ const Destaques = forwardRef((props, ref) => {
           mt={10}
         >
           <Grid
-            direction="column"
+            item
             md={4}
             p={isMobile || isTablet ? 0 : 10}
             sx={{
@@ -74,8 +86,15 @@ const Destaques = forwardRef((props, ref) => {
               height: { md: "60%", lg: "60%", xl: "45%" },
             }}
           >
-            <Typography variant="h6" sx={{textTransform: "uppercase"}}>Para particulares</Typography>
-            <Typography variant="h2" sx={{textTransform: "uppercase", fontFamily: "Times New Roman"}}>Dental sweet</Typography>
+            <Typography variant="h6" sx={{ textTransform: "uppercase" }}>
+              Para particulares
+            </Typography>
+            <Typography
+              variant="h2"
+              sx={{ textTransform: "uppercase", fontFamily: "Times New Roman" }}
+            >
+              Dental sweet
+            </Typography>
             <Typography variant="body1" pb={2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.

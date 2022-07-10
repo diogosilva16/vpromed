@@ -11,7 +11,7 @@ const MainPage = () => {
   const resultRef = useRef(null);
 
   return (
-    <Box pt={10}>
+    <Box pt={10} sx={{background: "#2A2A2A"}}>
       <Panorama resultRef={resultRef} />
       <Container maxWidth="xl">
         <Destaques ref={resultRef} />
