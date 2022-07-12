@@ -1,48 +1,55 @@
-body{
-    background-color: #2A2A2A;
-    overflow-x: hidden;
+body {
+  background-color: #2a2a2a;
+  overflow-x: hidden;
 }
 
 a {
-    text-decoration: none;
-}
-.navbar{
-    background-color: #535353;
-    height: 100px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    color: white;
-    
-    p{
-        margin: 0;
-        padding: 20px;
-    }
+  text-decoration: none;
+  color: inherit;
 }
 
-.teste{
-    background-color: #2A2A2A;
+li:hover {
+  color: #cec568;
+}
 
-    h1 {
-        margin: 0;
-        padding: 20px;
-    }
+.navbar {
+  background-color: #535353;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  color: white;
 
-    .feature1, .feature2{
-        background-image: url("https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2");
-        height: 100vh;
-        width: 100vw;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+  p {
+    margin: 0;
+    padding: 20px;
+  }
+}
 
-    .featureNoBg {
-        background-image: none;
-        // height: 100vh;
-        width: 100vw;
-    }
+.teste {
+  background-color: #2a2a2a;
+
+  h1 {
+    margin: 0;
+    padding: 20px;
+  }
+
+  .feature1,
+  .feature2 {
+    background-image: url("https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2");
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .featureNoBg {
+    background-image: none;
+    // height: 100vh;
+    width: 100vw;
+  }
 }
 
 // .pnlm-load-box{
@@ -53,24 +60,27 @@ a {
 //      background-color: red !important;
 // }
 
-.navLinks{
-    color: #fff
-    
+.navLinks {
+  color: #fff;
 }
 
 .borderEspecialidade {
-    position: relative;
+  position: relative;
 }
 
 .borderEspecialidade:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 40%;
-    border: 1px solid #CEC568;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  border: 1px solid #cec568;
 }
 
 .Mui-checked {
-    color: white !important
+  color: white !important;
+}
+
+.css-o4b71y-MuiAccordionSummary-content{
+  flex-grow: 0 !important;
 }

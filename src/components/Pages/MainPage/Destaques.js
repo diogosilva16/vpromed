@@ -7,7 +7,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import React, { forwardRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 
 const Destaques = forwardRef((props, ref) => {
@@ -17,8 +17,9 @@ const Destaques = forwardRef((props, ref) => {
 
   const navigate = useNavigate();
 
-  const goToHighPage = () => {
-    navigate("/destaque");
+  const goToHighPage = (id) => {
+    console.log(id);
+    navigate(`/destaque/${id}`);
   };
   return (
     <div ref={ref} className="teste">
@@ -62,7 +63,7 @@ const Destaques = forwardRef((props, ref) => {
               variant="contained"
               color="success"
               fullWidth
-              onClick={goToHighPage}
+              onClick={() => goToHighPage(1)}
             >
               Saber mais
             </Button>
@@ -99,7 +100,7 @@ const Destaques = forwardRef((props, ref) => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
-            <Button variant="contained" color="success" fullWidth>
+            <Button variant="contained" color="success" fullWidth onClick={() => goToHighPage(2)}>
               Saber mais
             </Button>
           </Grid>

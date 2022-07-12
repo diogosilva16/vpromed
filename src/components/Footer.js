@@ -8,7 +8,6 @@ const Footer = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
-
   return (
     <Container
       maxWidth="xl"
@@ -17,7 +16,7 @@ const Footer = () => {
       <Box sx={{ borderTop: "solid 1px #CEC568" }}>
         <Grid container pt={5}>
           <Grid item xs={12} md={3}>
-            <img src="https://via.placeholder.com/150" alt="Logo" />
+            <img src="https://via.placeholder.com/300x100" alt="Logo" />
           </Grid>
           <Grid item xs={12} md={3} pt={isMobile || isTablet && 3}>
             <Typography sx={{ color: "white", textTransform: "uppercase"}}>Horários</Typography>

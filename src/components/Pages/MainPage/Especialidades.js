@@ -3,29 +3,38 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const especialidades = [
-  "Medicina Dentária",
-  "Periodontologia",
-  "Prótese Dentária Personalizada",
-  "Higiene Oral",
-  "Ortodontia",
-  "Branqueamento estética",
-  "Implantologia",
+  { id: 1, title: "Medicina Dentária" },
+  { id: 2, title: "Periodontologia" },
+  { id: 3, title: "Prótese Dentária" },
+  { id: 4, title: "Higiene Oral" },
+  { id: 5, title: "Ortodontia" },
+  { id: 6, title: "Implantologia" },
+  { id: 7, title: "Branqueamento/Estética" },
 ];
 
 const Especialidades = () => {
   return (
     <Box>
       <Grid container>
-        <Grid item xs={12} pb={10} pt={5} sx={{textTransform: "uppercase"}}>
+        <Grid item xs={12} pb={10} pt={5} sx={{ textTransform: "uppercase" }}>
           <Typography sx={{ color: "white" }}>Especialidades</Typography>
-          <Typography variant="h2"  sx={{ color: "#CEC568", fontFamily: "Times New Roman"}}>
+          <Typography
+            variant="h2"
+            sx={{ color: "#CEC568", fontFamily: "Times New Roman" }}
+          >
             Conheça-nos
           </Typography>
         </Grid>
-        <Grid container spacing={5} columnSpacing={5} pb={10} sx={{textTransform: "uppercase"}}>
+        <Grid
+          container
+          spacing={5}
+          columnSpacing={5}
+          pb={10}
+          sx={{ textTransform: "uppercase" }}
+        >
           {especialidades.map((especialidade, key) => (
             <Grid item xs={6} md={3} key={key}>
-              <Link to={`/especialidade/`}>
+              <Link to={`/especialidade/${especialidade.id}`}>
                 <Paper
                   sx={{
                     textAlign: "center",
@@ -43,7 +52,7 @@ const Especialidades = () => {
                   sx={{ color: "white", textAlign: "center" }}
                   variant="subtitle2"
                 >
-                  {especialidade}
+                  {especialidade.title}
                 </Typography>
               </Link>
             </Grid>

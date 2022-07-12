@@ -1,11 +1,15 @@
 import React, { useRef } from "react";
 import { Pannellum } from "pannellum-react";
 import myImage from "../../../img/pano.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Panorama = ({ resultRef }) => {
 
-  const handleClick = () => {
-    resultRef.current.scrollIntoView({ behavior: "smooth" });
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    // resultRef.current.scrollIntoView({ behavior: "smooth" });
+    navigate(`/especialidade/${id}`);
   }
 
   return (
@@ -29,7 +33,7 @@ const Panorama = ({ resultRef }) => {
           yaw={130.75239204883815}
           text="Hotspot com informação dramática e muito mais! Queres saber mais? Clica aqui ;)"
           handleClick={() => {
-            handleClick();
+            handleClick(1);
           }}
         />
         <Pannellum.Hotspot
@@ -37,7 +41,9 @@ const Panorama = ({ resultRef }) => {
           pitch={9.798938389637957}
           yaw={154.68298369503444}
           text="Hotspot com informação dramática"
-          URL="https://hubduction.com"
+          handleClick={() => {
+            handleClick(2);
+          }}
         />
       </Pannellum>
     </>

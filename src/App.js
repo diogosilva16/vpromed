@@ -12,11 +12,13 @@ import Destaque from "./components/Pages/Destaque";
 import ScrollToTop from "./components/utils/ScrollToTop";
 import Contactos from "./components/Pages/Contactos";
 import FirstPage from "./components/Pages/FirstPage";
+import ScheduleWidget from "./components/ScheduleWidget";
 
 const LayoutWithNavFooter = () => (
   <>
     <Navbar />
     <Outlet />
+    <ScheduleWidget />
     <Footer />
   </>
 );
@@ -32,8 +34,8 @@ function App() {
           <Route path="/" element={<FirstPage />} />
           <Route element={<LayoutWithNavFooter />}>
             <Route path="/inicio" element={<MainPage />} />
-            <Route path="/especialidade" element={<Especialidade />} />
-            <Route path="/destaque" element={<Destaque />} />
+            <Route path="/especialidade/:id" element={<Especialidade />} />
+            <Route path="/destaque/:id" element={<Destaque />} />
             <Route path="/contactos" element={<Contactos />} />
           </Route>
         </Routes>

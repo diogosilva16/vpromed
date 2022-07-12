@@ -1,18 +1,19 @@
 import React from "react";
 import { Container, Grid, Box, Typography, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Destaque = () => {
+  const { id } = useParams();
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const goToContact = () => {
-        navigate("/contactos");
-    }
+  const goToContact = () => {
+    navigate("/contactos");
+  };
 
   return (
     <Container maxWidth="xl">
-      <Grid container pt={15}>
+      <Grid container pt={20}>
         <Box sx={{ width: "100vw" }}>
           <Grid item xs={12}>
             <Typography variant="h5" style={{ color: "white" }}>
@@ -20,8 +21,15 @@ const Destaque = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} pt={2} pb={5}>
-            <Typography sx={{ color: "#CEC568",  fontFamily: "Times New Roman", textTransform: "uppercase"}} variant="h3">
-              Dental Work
+            <Typography
+              sx={{
+                color: "#CEC568",
+                fontFamily: "Times New Roman",
+                textTransform: "uppercase",
+              }}
+              variant="h3"
+            >
+              Dental Work {id}
             </Typography>
           </Grid>
         </Box>
@@ -32,7 +40,12 @@ const Destaque = () => {
           <Grid item xs={12} p={5}>
             <Typography
               pl={2}
-              sx={{ color: "#CEC568", borderLeft: "1px solid #CEC568",  fontFamily: "Times New Roman", textTransform: "uppercase"}}
+              sx={{
+                color: "#CEC568",
+                borderLeft: "1px solid #CEC568",
+                fontFamily: "Times New Roman",
+                textTransform: "uppercase",
+              }}
               variant="h5"
             >
               Conheça as características do Dental Work
@@ -52,7 +65,9 @@ const Destaque = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} pt={5}>
-            <Typography sx={{ color: "#CEC568", textTransform: "uppercase"}}>SED ALIQUAM</Typography>
+            <Typography sx={{ color: "#CEC568", textTransform: "uppercase" }}>
+              SED ALIQUAM
+            </Typography>
           </Grid>
           <Grid item xs={12} pt={5}>
             <Typography sx={{ color: "white" }} variant="body1">
@@ -79,7 +94,9 @@ const Destaque = () => {
               "&:hover": {
                 color: "#CEC568",
               },
-            }} onClick={goToContact}>
+            }}
+            onClick={goToContact}
+          >
             Contacte-nos
           </Button>
         </Grid>
