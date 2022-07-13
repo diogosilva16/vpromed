@@ -1,29 +1,49 @@
 import { Grid, Typography, Paper, Box } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const especialidades = [
-  { id: 1, title: "Medicina Dentária" },
-  { id: 2, title: "Periodontologia" },
-  { id: 3, title: "Prótese Dentária" },
-  { id: 4, title: "Higiene Oral" },
-  { id: 5, title: "Ortodontia" },
-  { id: 6, title: "Implantologia" },
-  { id: 7, title: "Branqueamento/Estética" },
-];
+// const especialidades = [
+//   { id: 1, title: "Medicina Dentária" },
+//   { id: 2, title: "Periodontologia" },
+//   { id: 3, title: "Prótese Dentária" },
+//   { id: 4, title: "Higiene Oral" },
+//   { id: 5, title: "Ortodontia" },
+//   { id: 6, title: "Implantologia" },
+//   { id: 7, title: "Branqueamento/Estética" },
+// ];
 
 const Especialidades = () => {
+  const API_KEY = process.env.REACT_APP_TOKEN_KEY;
+
+  const [especialidades, setEspecialidades] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  const getEspecialidades = async () => {
+    try {
+      const response = await fetch(
+        `https://www.critecnow.com/promed/api/articlebycat/${API_KEY}/3/1`
+      );
+      const data = await response.json();
+      setEspecialidades(data);
+      setIsLoading(false);
+    } catch (error) {
+      setHasError(true);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getEspecialidades();
+  }, []);
+
   return (
     <Box>
       <Grid container>
         <Grid item xs={12} pb={10} pt={5} sx={{ textTransform: "uppercase" }}>
-          <Typography sx={{ color: "white" }}>Especialidades</Typography>
-          <Typography
-            variant="h2"
-            sx={{ color: "#CEC568", fontFamily: "Times New Roman" }}
-          >
-            Conheça-nos
-          </Typography>
+          <Typography variant="subtitle1">Especialidades</Typography>
+          <Typography variant="h2">Conheça-nos</Typography>
         </Grid>
         <Grid
           container
@@ -34,7 +54,7 @@ const Especialidades = () => {
         >
           {especialidades.map((especialidade, key) => (
             <Grid item xs={6} md={3} key={key}>
-              <Link to={`/especialidade/${especialidade.id}`}>
+              <Link to={`/especialidade/${especialidade.ARTICLE_ID}`}>
                 <Paper
                   sx={{
                     textAlign: "center",
@@ -52,7 +72,7 @@ const Especialidades = () => {
                   sx={{ color: "white", textAlign: "center" }}
                   variant="subtitle2"
                 >
-                  {especialidade.title}
+                  {especialidade.NAME_SEO}
                 </Typography>
               </Link>
             </Grid>

@@ -26,13 +26,10 @@ const ScheduleWidget = () => {
 
   const openSchedule = () => {
     setOpen(true);
-    console.log("open", open);
   };
 
   const closeSchedule = () => {
     setOpen(false);
-    console.log("close", open);
-    console.log(open);
   };
 
   return (

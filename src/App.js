@@ -2,7 +2,7 @@ import "./App.scss";
 import "./style/sass/styles.scss";
 import MainPage from "./components/Pages/MainPage/MainPage";
 import Theme from "./components/utils/Theme";
-import { useRef } from "react";
+import { useRef, createContext, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import Navbar from "./components/Navbar/Navbar";
@@ -13,6 +13,7 @@ import ScrollToTop from "./components/utils/ScrollToTop";
 import Contactos from "./components/Pages/Contactos";
 import FirstPage from "./components/Pages/FirstPage";
 import ScheduleWidget from "./components/ScheduleWidget";
+import { Context } from "./components/utils/Context";
 
 const LayoutWithNavFooter = () => (
   <>

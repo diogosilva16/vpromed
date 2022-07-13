@@ -21,16 +21,11 @@ const Form = () => {
   return (
     <Box>
       <Grid container>
-        <Grid item xs={12} pb={10} pt={5} sx={{ textTransform: "uppercase" }}>
-          <Typography sx={{ color: "white" }}>
+        <Grid item xs={12} pb={5} pt={5} sx={{ textTransform: "uppercase" }}>
+          <Typography variant="subtitle1">
             Os nossos especialistas cuidam de si
           </Typography>
-          <Typography
-            variant="h2"
-            sx={{ color: "#CEC568", fontFamily: "Times New Roman" }}
-          >
-            Agende a sua consulta
-          </Typography>
+          <Typography variant="h2">Agende a sua consulta</Typography>
         </Grid>
         <Grid item xs={12}>
           <form>
@@ -89,7 +84,7 @@ const Form = () => {
               </Grid>
               <Grid item pt={2}>
                 <FormControlLabel
-                  sx={{color: "white" }}
+                  sx={{ color: "white" }}
                   control={
                     <Checkbox
                       required

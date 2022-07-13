@@ -30,9 +30,9 @@ const Contactos = () => {
                     background:
                       "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(50,50,50,1) 85%, rgba(62,62,62,1) 100%)",
                     color: "white",
-                    "&:hover": {
-                      color: "#CEC568",
-                    },
+                    // "&:hover": {
+                    //   color: "#CEC568",
+                    // },
                   }}
                 >
                   <AccordionSummary>
@@ -70,10 +70,10 @@ const Contactos = () => {
                     background:
                       "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(50,50,50,1) 85%, rgba(62,62,62,1) 100%)",
                     color: "white",
-                    "&:hover": {
-                      background:
-                        "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(96,96,96,1) 85%, rgba(255,255,255,0) 100%)",
-                    },
+                    // "&:hover": {
+                    //   background:
+                    //     "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(96,96,96,1) 85%, rgba(255,255,255,0) 100%)",
+                    // },
                   }}
                 >
                   <AccordionSummary>
