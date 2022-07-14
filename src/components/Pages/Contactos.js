@@ -13,37 +13,14 @@ import Form from "./MainPage/Form";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import Loader from "../Loader";
 import { useTheme } from "@emotion/react";
+import { CompanyInfoContext } from "../../contexts/CompanyInfoContext";
 
 const Contactos = () => {
-  const API_KEY = process.env.REACT_APP_TOKEN_KEY;
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-
-  const [companyInfo, setCompanyInfo] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  const getCompanyInfo = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/company/${API_KEY}`
-      );
-      const data = await response.json();
-      setCompanyInfo(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getCompanyInfo();
-  }, [isLoading]);
-
-  console.log(companyInfo);
+  const { companyInfo, isLoading, hasError } = useContext(CompanyInfoContext);
 
   return (
     <>

@@ -1,44 +1,16 @@
-import {
-  Container,
-  Typography,
-  Grid,
-  Box,
-  Button,
-  useMediaQuery,
-} from "@mui/material";
-import React, { forwardRef, useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Typography, Grid, Box, Button, useMediaQuery } from "@mui/material";
+import React, { forwardRef, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import Loader from "../../Loader";
+import { CompanyInfoContext } from "../../../contexts/CompanyInfoContext";
 
 const Destaques = forwardRef((props, ref) => {
-  const API_KEY = process.env.REACT_APP_TOKEN_KEY;
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [destaques, setDestaques] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  const getDestaques = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/articlebycat/${API_KEY}/4/1`
-      );
-      const data = await response.json();
-      setDestaques(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getDestaques();
-  }, [isLoading]);
+  const { dest, destIsLoading, destHasError } = useContext(CompanyInfoContext);
 
   const navigate = useNavigate();
 
@@ -48,8 +20,8 @@ const Destaques = forwardRef((props, ref) => {
 
   return (
     <>
-      {isLoading && <Loader />}
-      {!isLoading && !hasError &&  (
+      {destIsLoading && <Loader />}
+      {!destIsLoading && !destHasError && (
         <div ref={ref} className="teste">
           <Grid container pt={5} pb={5}>
             <Typography
@@ -88,16 +60,16 @@ const Destaques = forwardRef((props, ref) => {
                     color: "white",
                   }}
                 >
-                  {destaques[0].NAME_SEO}
+                  {dest[0].NAME_SEO}
                 </Typography>
                 <Typography variant="body1" pb={2}>
-                  {JSON.parse(destaques[0].CUSTOMCAMPS).small_description}
+                  {JSON.parse(dest[0].CUSTOMCAMPS).small_description}
                 </Typography>
                 <Button
                   variant="contained"
                   color="success"
                   fullWidth
-                  onClick={() => goToHighPage(destaques[0].ARTICLE_ID)}
+                  onClick={() => goToHighPage(dest[0].ARTICLE_ID)}
                 >
                   Saber mais
                 </Button>
@@ -132,16 +104,16 @@ const Destaques = forwardRef((props, ref) => {
                     color: "white",
                   }}
                 >
-                 {destaques[1].NAME_SEO}
+                  {dest[1].NAME_SEO}
                 </Typography>
                 <Typography variant="body1" pb={2}>
-                {JSON.parse(destaques[1].CUSTOMCAMPS).small_description}
+                  {JSON.parse(dest[1].CUSTOMCAMPS).small_description}
                 </Typography>
                 <Button
                   variant="contained"
                   color="success"
                   fullWidth
-                  onClick={() => goToHighPage(destaques[1].ARTICLE_ID)}
+                  onClick={() => goToHighPage(dest[1].ARTICLE_ID)}
                 >
                   Saber mais
                 </Button>

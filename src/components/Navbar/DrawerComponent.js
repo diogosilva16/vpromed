@@ -1,51 +1,15 @@
 import { Drawer, List, ListItem, ListItemText } from "@mui/material";
-import { useNavigate, Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import { MenuData } from "./MenuData";
-
+import { CompanyInfoContext } from "../../contexts/CompanyInfoContext";
 export const DrawerComponent = ({ openDrawer, setOpenDrawer }) => {
-  const API_KEY = process.env.REACT_APP_TOKEN_KEY;
 
   const listItemStyle = { paddingTop: 0, paddingBottom: 0, textAlign: "right" };
   const alignText = { textAlign: "right", paddingBottom: 0 };
 
-  const [espec, setEspec] = useState([]);
-  const [dest, setDest] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
+  const { dest, destHasError, destIsLoading, espec, especIsLoading, especHasError } = useContext(CompanyInfoContext);
 
-  const getEspec = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/articlebycat/${API_KEY}/3/1`
-      );
-      const data = await response.json();
-      setEspec(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  const getDest = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/articlebycat/${API_KEY}/4/1`
-      );
-      const data = await response.json();
-      setDest(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getEspec();
-    getDest();
-  }, []);
 
   const renderMenu = () => {
     return MenuData.map((page, key) => (

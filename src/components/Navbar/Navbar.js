@@ -5,7 +5,6 @@ import {
   Typography,
   IconButton,
   Box,
-  Button,
   useMediaQuery,
   useTheme,
   Stack,
@@ -15,76 +14,30 @@ import {
   Popover,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { DrawerComponent } from "./DrawerComponent";
 import { Link } from "react-router-dom";
 import { MenuData } from "./MenuData";
-import { Context } from "../utils/Context";
-import Loader from "../Loader";
+import { CompanyInfoContext } from "../../contexts/CompanyInfoContext";
 
 const Navbar = () => {
-  const API_KEY = process.env.REACT_APP_TOKEN_KEY;
-
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openedPopoverId, setOpenedPopoverId] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [espec, setEspec] = useState([]);
-  const [dest, setDest] = useState([]);
-  const [cInfo, setCInfo] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  const getEspec = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/articlebycat/${API_KEY}/3/1`
-      );
-      const data = await response.json();
-      setEspec(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  const getDest = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/articlebycat/${API_KEY}/4/1`
-      );
-      const data = await response.json();
-      setDest(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  const getCInfo = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/company/${API_KEY}`
-      );
-      const data = await response.json();
-      setCInfo(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getCInfo();
-
-    getEspec();
-    getDest();
-  }, []);
+  const {
+    companyInfo,
+    isLoading,
+    hasError,
+    dest,
+    destHasError,
+    destIsLoading,
+    espec,
+    especIsLoading,
+    especHasError,
+  } = useContext(CompanyInfoContext);
 
   const handleClick = (event, popoverId) => {
     setOpenedPopoverId(popoverId);
@@ -167,15 +120,12 @@ const Navbar = () => {
       {/* {isLoading && <Loader />} */}
       {!isLoading && !hasError && (
         <AppBar position="fixed">
-          <Container
-            maxWidth="xl"
-            sx={{ marginTop: "15px", marginBottom: "15px" }}
-          >
+          <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Link to={"/inicio"}>
                 <Typography>
                   <img
-                    src={cInfo[0]?.VALUE || ''}
+                    src={companyInfo[0]?.VALUE || ""}
                     alt="v-promed"
                     width="150"
                   />

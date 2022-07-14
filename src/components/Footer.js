@@ -1,8 +1,9 @@
 import { Box, Grid, Typography, Container, useMediaQuery } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import { useTheme } from "@emotion/react";
 import Loader from "./Loader";
+import { CompanyInfoContext } from "../contexts/CompanyInfoContext";
 
 const Footer = () => {
   const API_KEY = process.env.REACT_APP_TOKEN_KEY;
@@ -11,27 +12,7 @@ const Footer = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [companyInfo, setCompanyInfo] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  const getCompanyInfo = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/company/${API_KEY}`
-      );
-      const data = await response.json();
-      setCompanyInfo(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getCompanyInfo();
-  }, [isLoading]);
+  const { companyInfo, isLoading, hasError } = useContext(CompanyInfoContext);
 
   return (
     <>

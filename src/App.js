@@ -28,33 +28,8 @@ const LayoutWithNavFooter = () => (
 function App() {
   const resultRef = useRef(null);
 
-  const API_KEY = process.env.REACT_APP_TOKEN_KEY;
-
-
-  const [companyInfo, setCompanyInfo] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  const getCompanyInfo = async () => {
-    try {
-      const response = await fetch(
-        `https://www.critecnow.com/promed/api/company/${API_KEY}`
-      );
-      const data = await response.json();
-      setCompanyInfo(data);
-      setIsLoading(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getCompanyInfo();
-  }, [isLoading]);
-
   return (
-    <CompanyInfoContextProvider value={{companyInfo, isLoading, hasError}}>
+    <CompanyInfoContextProvider>
       <ThemeProvider theme={Theme}>
         <BrowserRouter>
           <ScrollToTop />
