@@ -15,6 +15,7 @@ import FirstPage from "./components/Pages/FirstPage";
 import ScheduleWidget from "./components/ScheduleWidget";
 import { Context } from "./components/utils/Context";
 import { CompanyInfoContextProvider } from "./contexts/CompanyInfoContext";
+import { CompanySpecialitiesContextProvider } from "./contexts/CompanySpecialitiesContext";
 
 const LayoutWithNavFooter = () => (
   <>
@@ -30,20 +31,22 @@ function App() {
 
   return (
     <CompanyInfoContextProvider>
-      <ThemeProvider theme={Theme}>
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<FirstPage />} />
-            <Route element={<LayoutWithNavFooter />}>
-              <Route path="/inicio" element={<MainPage />} />
-              <Route path="/especialidade/:id" element={<Especialidade />} />
-              <Route path="/destaque/:id" element={<Destaque />} />
-              <Route path="/contactos" element={<Contactos />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
+      <CompanySpecialitiesContextProvider>
+        <ThemeProvider theme={Theme}>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<FirstPage />} />
+              <Route element={<LayoutWithNavFooter />}>
+                <Route path="/inicio" element={<MainPage />} />
+                <Route path="/especialidade/:id" element={<Especialidade />} />
+                <Route path="/destaque/:id" element={<Destaque />} />
+                <Route path="/contactos" element={<Contactos />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
+      </CompanySpecialitiesContextProvider>
     </CompanyInfoContextProvider>
   );
 }

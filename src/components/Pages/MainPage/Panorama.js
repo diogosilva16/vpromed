@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Pannellum } from "pannellum-react";
 import myImage from "../../../img/pano.jpg";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const Panorama = ({ resultRef }) => {
 
@@ -11,13 +12,16 @@ const Panorama = ({ resultRef }) => {
     // resultRef.current.scrollIntoView({ behavior: "smooth" });
     navigate(`/especialidade/${id}`);
   }
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
 
   return (
     <>
       <Pannellum
         autoLoad
         width="100vw"
-        height="100vh"
+        height={isMobile ? "70vh" : "100vh"}
         image={myImage}
         pitch={0}
         yaw={180}

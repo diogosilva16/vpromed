@@ -2,10 +2,10 @@ import { Grid, Typography, Paper, Box } from "@mui/material";
 import React, { useContext} from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../Loader";
-import { CompanyInfoContext } from "../../../contexts/CompanyInfoContext";
+import { CompanySpecialitiesContext } from "../../../contexts/CompanySpecialitiesContext";
 
 const Especialidades = () => {
-  const {espec, especIsLoading, especHasError} = useContext(CompanyInfoContext);
+  const {espec, especIsLoading, especHasError} = useContext(CompanySpecialitiesContext);
   
   const renderEspecialidades = () => {
     return espec.map((especialidade, key) => (

@@ -3,32 +3,40 @@ import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { MenuData } from "./MenuData";
 import { CompanyInfoContext } from "../../contexts/CompanyInfoContext";
-export const DrawerComponent = ({ openDrawer, setOpenDrawer }) => {
+import { CompanySpecialitiesContext } from "../../contexts/CompanySpecialitiesContext";
 
+export const DrawerComponent = ({ openDrawer, setOpenDrawer }) => {
   const listItemStyle = { paddingTop: 0, paddingBottom: 0, textAlign: "right" };
   const alignText = { textAlign: "right", paddingBottom: 0 };
 
-  const { dest, destHasError, destIsLoading, espec, especIsLoading, especHasError } = useContext(CompanyInfoContext);
+  const { dest, destHasError, destIsLoading } = useContext(CompanyInfoContext);
 
+  const { espec, especIsLoading, especHasError } = useContext(
+    CompanySpecialitiesContext
+  );
 
   const renderMenu = () => {
-    return MenuData.map((page, key) => (
-      <Link to={page.path !== null && page.path}>
-        <ListItem key={key} sx={alignText} onClick={() => setOpenDrawer(false)}>
-          <ListItemText>{page.title}</ListItemText>
-        </ListItem>
-        {page.id === 2 ? (
-          <List
-            sx={{
-              fontWeight: "200",
-              color: "rgba(255,255,255,0.5)",
-              textTransform: "uppercase",
-            }}
+    return MenuData.map((page, key) =>
+      page.path !== null ? (
+        <Link to={page.path !== null ? page.path : ""}>
+          <ListItem
+            key={key}
+            sx={alignText}
+            onClick={() => setOpenDrawer(false)}
           >
-            {renderEspecData()}
-          </List>
-        ) : (
-          page.id === 3 && (
+            <ListItemText>{page.title}</ListItemText>
+          </ListItem>
+        </Link>
+      ) : (
+        <>
+          <ListItem
+            key={key}
+            sx={alignText}
+            onClick={() => setOpenDrawer(false)}
+          >
+            <ListItemText>{page.title}</ListItemText>
+          </ListItem>
+          {page.id === 2 ? (
             <List
               sx={{
                 fontWeight: "200",
@@ -36,12 +44,24 @@ export const DrawerComponent = ({ openDrawer, setOpenDrawer }) => {
                 textTransform: "uppercase",
               }}
             >
-              {renderDestData()}
+              {renderEspecData()}
             </List>
-          )
-        )}
-      </Link>
-    ));
+          ) : (
+            page.id === 3 && (
+              <List
+                sx={{
+                  fontWeight: "200",
+                  color: "rgba(255,255,255,0.5)",
+                  textTransform: "uppercase",
+                }}
+              >
+                {renderDestData()}
+              </List>
+            )
+          )}{" "}
+        </>
+      )
+    );
   };
 
   const renderEspecData = () => {

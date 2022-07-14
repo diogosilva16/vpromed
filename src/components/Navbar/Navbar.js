@@ -19,6 +19,7 @@ import { DrawerComponent } from "./DrawerComponent";
 import { Link } from "react-router-dom";
 import { MenuData } from "./MenuData";
 import { CompanyInfoContext } from "../../contexts/CompanyInfoContext";
+import { CompanySpecialitiesContext } from "../../contexts/CompanySpecialitiesContext";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,11 +34,11 @@ const Navbar = () => {
     hasError,
     dest,
     destHasError,
-    destIsLoading,
-    espec,
-    especIsLoading,
-    especHasError,
+    destIsLoading
   } = useContext(CompanyInfoContext);
+
+  const {espec, especIsLoading, especHasError} = useContext(CompanySpecialitiesContext);
+
 
   const handleClick = (event, popoverId) => {
     setOpenedPopoverId(popoverId);
