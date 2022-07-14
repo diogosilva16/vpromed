@@ -16,11 +16,11 @@ const Theme = createTheme({
       fontFamily: "Times New Roman",
     },
     h3: {},
-    h4: {},
+    h4: { color: "#CEC568", fontFamily: "Times New Roman" },
     body1: {},
     body2: {},
     subtitle1: {
-        color: "#fff",
+      color: "#fff",
     },
     subtitle2: {},
     caption: {},

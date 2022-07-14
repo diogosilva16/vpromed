@@ -50,7 +50,7 @@ const Footer = () => {
                 <Typography sx={{ color: "white", textTransform: "uppercase" }}>
                   Horários
                 </Typography>
-                <Typography sx={{ color: "white" }}>
+                <Typography sx={{ color: "white",  whiteSpace: "pre-wrap"}}>
                   {companyInfo[8].VALUE}
                 </Typography>
               </Grid>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   FormGroup,
@@ -18,6 +18,44 @@ const Form = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
+  const [formData, setFormData] = useState([]);
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [choice, setChoice] = useState();
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+
+    const formInfo = {
+      name: name,
+      contact: contact,
+      choice: choice === 1 ? "Marcar uma consulta" : "Pedir informações",
+    };
+
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formInfo),
+    };
+
+    console.log(formInfo);
+
+    setName("");
+    setContact("");
+    setChoice();
+  };
+
+  const updateName = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
+  };
+
+  const updateContact = (e) => {
+    e.preventDefault();
+    setContact(e.target.value);
+  };
+
   return (
     <Box>
       <Grid container>
@@ -25,7 +63,7 @@ const Form = () => {
           <Typography variant="subtitle1">
             Os nossos especialistas cuidam de si
           </Typography>
-          <Typography variant="h2">Agende a sua consulta</Typography>
+          <Typography variant={isMobile ? "h4" : "h2"}>Agende a sua consulta</Typography>
         </Grid>
         <Grid item xs={12}>
           <form>
@@ -41,6 +79,7 @@ const Form = () => {
                       background: "white",
                       borderRadius: "5px",
                     }}
+                    onChange={updateName}
                   ></TextField>
                 </Grid>
                 <Grid item>
@@ -53,6 +92,9 @@ const Form = () => {
                       background: "white",
                       borderRadius: "5px",
                     }}
+                    onChange={updateContact}
+                    type="number"
+                    onInput={(e)=>{e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0,9)}}
                   ></TextField>
                 </Grid>
               </Grid>
@@ -64,6 +106,12 @@ const Form = () => {
                       textTransform: "uppercase",
                       border: "1px solid white",
                       width: "300px",
+                      "&:focus": {
+                        background: "black",
+                      }
+                    }}
+                    onClick={() => {
+                      setChoice(1);
                     }}
                   >
                     Marcar uma consulta
@@ -76,6 +124,12 @@ const Form = () => {
                       textTransform: "uppercase",
                       border: "1px solid white",
                       width: "300px",
+                      "&:focus": {
+                        background: "black",
+                      }
+                    }}
+                    onClick={() => {
+                      setChoice(2);
                     }}
                   >
                     Pedir informações
@@ -106,6 +160,7 @@ const Form = () => {
                     border: "1px solid #CEC568",
                     width: isMobile || isTablet ? "50%" : "10%",
                   }}
+                  onClick={submitForm}
                 >
                   Enviar
                 </Button>

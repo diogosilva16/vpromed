@@ -13,7 +13,6 @@ import Form from "./MainPage/Form";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import Loader from "../Loader";
 import { useTheme } from "@emotion/react";
-import {  } from "../contexts/CompanyInfoCounter"; 
 
 const Contactos = () => {
   const API_KEY = process.env.REACT_APP_TOKEN_KEY;

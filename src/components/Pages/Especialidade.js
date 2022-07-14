@@ -50,7 +50,7 @@ const Especialidade = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {!isLoading && (
+      {!isLoading && !hasError && (
         <Container maxWidth="xl">
           <Grid container pt={20} pb={5}>
             <Box sx={{ width: "100vw", background: "black" }}>
@@ -89,7 +89,7 @@ const Especialidade = () => {
               </Grid>
               <Grid item xs={12} pt={2}>
                 {/* <Typography variant="body1">{convertToPlain(teste).replace(/<[^>]*>/g, "")} {id}</Typography> */}
-                <Typography variant="body1">
+                <Typography variant="body1" sx={{whiteSpace: "pre-line"}}>
                   {especialidadeInfo.TEXT_SEO}
                 </Typography>
               </Grid>

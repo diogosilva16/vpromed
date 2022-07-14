@@ -9,6 +9,7 @@ import {
 import React, { forwardRef, useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useTheme } from "@emotion/react";
+import Loader from "../../Loader";
 
 const Destaques = forwardRef((props, ref) => {
   const API_KEY = process.env.REACT_APP_TOKEN_KEY;
@@ -47,8 +48,8 @@ const Destaques = forwardRef((props, ref) => {
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
-      {!isLoading && (
+      {isLoading && <Loader />}
+      {!isLoading && !hasError &&  (
         <div ref={ref} className="teste">
           <Grid container pt={5} pb={5}>
             <Typography
